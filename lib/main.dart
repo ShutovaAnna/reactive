@@ -45,7 +45,7 @@ class _CounterPageState extends State<CounterPage> {
           initialData: 0,
           builder: (context, snapshot) {
             return Text(
-              'Секундомер: ${snapshot.data}',
+              'Счет ${snapshot.data}',
               style: Theme.of(context).textTheme.headlineMedium,
             );
           },
