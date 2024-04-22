@@ -19,7 +19,7 @@ class CounterPage extends StatefulWidget {
 
 class _CounterPageState extends State<CounterPage> {
  final _counterController = StreamController<int>();
- int _counter = 0;
+ int _counter = 0; //управляет счетчиком
 
  @override
  void initState() {
@@ -27,20 +27,20 @@ class _CounterPageState extends State<CounterPage> {
     Timer.periodic(Duration(seconds: 1), (timer) {
       _counter++;
       _counterController.sink.add(_counter);
-    });
+    }); 
  }
 
  @override
  void dispose() {
     _counterController.close();
-    super.dispose();
+    super.dispose(); //метод, чтобы избежать уутечек памяти
  }
 
  @override
  Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: StreamBuilder<int>(
+        child: StreamBuilder<int>( //отображает текущее значение
           stream: _counterController.stream,
           initialData: 0,
           builder: (context, snapshot) {
